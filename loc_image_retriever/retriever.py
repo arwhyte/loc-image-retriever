@@ -2,7 +2,7 @@ import datetime as dt
 import logging
 import requests
 import sys
-import yaml
+import umpyutl as utl
 
 from argparser import create_parser
 from pathlib import Path
@@ -102,42 +102,6 @@ def create_url(parser, config, gmd, id_prefix, num):
             ])
 
 
-def read_yaml_file(filepath):
-    """Read a YAML (Yet Another Markup Language) file given a valid filepath.
-
-    Parameters:
-        filepath (str): absolute or relative path to target file
-
-    Returns:
-        obj: typically a list or dictionary representation of the file object
-    """
-
-    with open(filepath, 'r') as file_object:
-        data = yaml.load(file_object, Loader=yaml.FullLoader)
-
-        return data
-
-
-def write_file(filepath, data, mode='w', chunk_size=1024):
-    """Writes content to a target file. Override the optional write mode value
-    if binary content <class 'bytes'> is to be written to file (i.e., mode='wb')
-    or an append operation is intended on an existing file (i.e., mode='a' or 'ab').
-
-    Parameters:
-        filepath (str): absolute or relative path to target file
-        data (obj): data to be written to the target file
-        mode (str): write operation mode
-        chunk_size (int); size of data chunks to stream
-
-    Returns:
-       None
-    """
-
-    with open(filepath, mode) as file_object:
-        for chunk in data.iter_content(chunk_size=chunk_size):
-            file_object.write(chunk)
-
-
 def main(args):
     """Entry point. Orchestrates the workflow.
 
@@ -153,7 +117,7 @@ def main(args):
     output_path = parser.output
 
     # load YAML config
-    config = read_yaml_file('./config.yml')
+    config = utl.read.read_yaml('./config.yml')
 
     # YAML config values
     map_config = config['maps'][parser.key] # filter on CLI arg
@@ -215,7 +179,7 @@ def main(args):
             logger.info(f"Image renamed to {filepath.name}")
 
             # Write binary content (mode=wb)
-            write_file(filepath, response, 'wb')
+            utl.write.write_file_response_chunked(filepath, response, 'wb')
             # write_file(filepath, response.content, 'wb')
 
     # End run

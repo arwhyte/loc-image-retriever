@@ -1,8 +1,0 @@
----
-cities:
-  ann_arbor_1925:
-    url: https://tile.loc.gov/image-services/iiif/service:gmd:gmd411m:g4114m:g4114am:g039091925:03909_1925-0000/full/pct:25/0/default.jpg
-  chelsea_1918:
-    url: https://tile.loc.gov/image-services/iiif/service:gmd:gmd411m:g4114m:g4114cm:g039611918:03961_1918-0001/full/pct:25/0/default.jpg
-  jackson_1907:
-    url: https://tile.loc.gov/image-services/iiif/service:gmd:gmd411m:g4114m:g4114jm:g040571907:04057_1907-0000/full/pct:25/0/default.jpg

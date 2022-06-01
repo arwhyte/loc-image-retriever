@@ -8,6 +8,26 @@ service_path:
   jp2: storage-services/service
   tif: storage-services/master
 maps:
+  albion_mi_1918:
+    digital_id: http://hdl.loc.gov/loc.gmd/g4114am.g039011918
+    manifest: https://www.loc.gov/item/sanborn03901_006/manifest.json
+    filename_segments:
+      name:
+        - Map
+        - LOC
+        - Sanborn
+        - Albion
+        - MI
+      year: 1918
+      vol: null
+    path_segments:
+      - gmd: gmd:gmd411m:g4114m:g4114am:g039011918
+        id_prefix: 03901_1918-
+        part: null
+        index:
+          start: 1
+          stop: 18
+          zfill_width: 4
   ann_arbor_mi_1888:
     digital_id: http://hdl.loc.gov/loc.gmd/g4114am.g039091888
     manifest: https://www.loc.gov/item/sanborn03909_001/manifest.json
